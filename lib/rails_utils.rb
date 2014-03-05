@@ -1,8 +1,7 @@
 module RailsUtils
 
-  RAILS2_RUN_COMMAND = "./script/server"
-  RAILS3_RUN_COMMAND = "./script/rails"
-  RAILS4_RUN_COMMNAD = "rails"
+  RAILS2_RUN_SCRIPT = "./script/server"
+  RAILS3_RUN_SCRIPT = "./script/rails"
 
   def self.rails_run_command
     case rails_version
@@ -15,9 +14,9 @@ module RailsUtils
   private
 
   def self.rails_version
-    if File.exist?(RAILS2_RUN_COMMAND)
+    if File.exist?(RAILS2_RUN_SCRIPT)
       2
-    elsif File.exist?(RAILS3_RUN_COMMAND)
+    elsif File.exist?(RAILS3_RUN_SCRIPT)
       3
     else
       4
@@ -25,15 +24,15 @@ module RailsUtils
   end
 
   def self.rails2_run
-    "#{RAILS2_RUN_COMMAND} -p"
+    "#{RAILS2_RUN_SCRIPT} -p"
   end
 
   def self.rails3_run
-    "#{RAILS3_RUN_COMMAND} server --debugger -p"
+    "#{RAILS3_RUN_SCRIPT} server --debugger -p"
   end
 
   def self.rails4_run
-    "#{RAILS4_RUN_COMMNAD} server --debugger -p"
+    "rails server --debugger -p"
   end
 
 end
